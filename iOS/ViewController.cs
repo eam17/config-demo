@@ -10,6 +10,7 @@ namespace ConfigDemo.iOS
     {
         int count = 1;
         Root _Root;
+        ObjectTableViewCell _ObjectCell;
         public ViewController(IntPtr handle) : base(handle)
         {
         }
@@ -20,10 +21,21 @@ namespace ConfigDemo.iOS
 
             this.TableView.RegisterNibForCellReuse(ObjectTableViewCell.Nib, ObjectTableViewCell.Key);
             this.TableView.RegisterNibForCellReuse(PropertyTableViewCell.Nib, PropertyTableViewCell.Key);
+            this.TableView.RowHeight = UITableView.AutomaticDimension;
+            this.TableView.EstimatedRowHeight = 44;
+            this.TableView.TableFooterView = new UIView();
 
             // Perform any additional setup after loading the view, typically from a nib.
             GetRoot();
 
+        }
+
+        void NavigateToSecongLevel()
+        {
+            var sb = UIStoryboard.FromName("Main", null);
+            var vc = sb.InstantiateViewController("SecondLevelViewController");
+            //var vc2 = this.Storyboard.InstantiateViewController("SecondLevelViewController");
+            this.NavigationController.PushViewController(vc, true);
         }
 
         public override void DidReceiveMemoryWarning()
@@ -33,9 +45,10 @@ namespace ConfigDemo.iOS
         }
         async void GetRoot()
         {
-            this._Root = await new NetworkKat().GetRootObject();
+            this._Root = await new NetworkKat().GetRootObject<Root>();
             var source = new ItemsDatasource(this._Root);
             this.TableView.Source = source;
+            this.TableView.ReloadData();
         }
     }
 }

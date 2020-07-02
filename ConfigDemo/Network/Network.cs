@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using ConfigDemo.Models;
@@ -27,7 +26,7 @@ namespace ConfigDemo.Network
                 Debug.WriteLine("Message :{0} ", e.Message);
             }
 
-            return default(T);
+            return default;
         }
 
         T ParseJSON<T>(string response)

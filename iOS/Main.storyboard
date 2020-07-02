@@ -77,6 +77,39 @@
             </objects>
             <point key="canvasLocation" x="2086" y="-406"/>
         </scene>
+        <!--Second Level View Controller-->
+        <scene sceneID="uaN-s8-yJe">
+            <objects>
+                <viewController storyboardIdentifier="SecondLevelViewController" id="XMK-T7-2SV" customClass="SecondLevelViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kxX-IV-EW4"/>
+                        <viewControllerLayoutGuide type="bottom" id="suz-Gn-5vc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ahF-l8-bt4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZqI-pS-MKC">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="suz-Gn-5vc" firstAttribute="top" secondItem="ZqI-pS-MKC" secondAttribute="bottom" id="53y-tj-wF5"/>
+                            <constraint firstAttribute="trailing" secondItem="ZqI-pS-MKC" secondAttribute="trailing" id="5Tx-k1-Ksc"/>
+                            <constraint firstItem="ZqI-pS-MKC" firstAttribute="leading" secondItem="ahF-l8-bt4" secondAttribute="leading" id="FbV-Pa-rPQ"/>
+                            <constraint firstItem="ZqI-pS-MKC" firstAttribute="top" secondItem="kxX-IV-EW4" secondAttribute="bottom" id="yIC-VY-1e0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="TableView" destination="ZqI-pS-MKC" id="38y-vr-dSz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vHV-bc-XMK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2772" y="-406"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="219">
             <objects>

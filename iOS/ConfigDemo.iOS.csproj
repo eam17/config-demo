@@ -130,6 +130,11 @@
     <Compile Include="FirstLevelViewController.designer.cs">
       <DependentUpon>FirstLevelViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Datasources\FirstLevelDatasource.cs" />
+    <Compile Include="SecondLevelViewController.cs" />
+    <Compile Include="SecondLevelViewController.designer.cs">
+      <DependentUpon>SecondLevelViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
