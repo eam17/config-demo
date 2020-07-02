@@ -92,10 +92,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Datasources\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="DetailViewController.xib" />
+    <InterfaceDefinition Include="ObjectTableViewCell.xib" />
+    <InterfaceDefinition Include="PropertyTableViewCell.xib" />
+    <InterfaceDefinition Include="FirstLevelViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -107,6 +112,23 @@
     <Compile Include="ViewController.cs" />
     <Compile Include="ViewController.designer.cs">
       <DependentUpon>ViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailViewController.cs" />
+    <Compile Include="DetailViewController.designer.cs">
+      <DependentUpon>DetailViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Datasources\ItemsDatasource.cs" />
+    <Compile Include="ObjectTableViewCell.cs" />
+    <Compile Include="ObjectTableViewCell.designer.cs">
+      <DependentUpon>ObjectTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyTableViewCell.cs" />
+    <Compile Include="PropertyTableViewCell.designer.cs">
+      <DependentUpon>PropertyTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FirstLevelViewController.cs" />
+    <Compile Include="FirstLevelViewController.designer.cs">
+      <DependentUpon>FirstLevelViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

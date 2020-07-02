@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cxk-wN-pdQ" customClass="PropertyTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="526" height="108"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxk-wN-pdQ" id="YTl-1W-gDM">
+                <rect key="frame" x="0.0" y="0.0" width="526" height="108"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Key" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkB-xK-qQI">
+                        <rect key="frame" x="16" y="16" width="243" height="76"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wS4-sZ-SqM">
+                        <rect key="frame" x="267" y="16" width="243" height="76"/>
+                        <string key="text">ValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValueValue</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="wkB-xK-qQI" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="16" id="3lz-ui-8sl"/>
+                    <constraint firstAttribute="trailing" secondItem="wS4-sZ-SqM" secondAttribute="trailing" constant="16" id="Fdi-yI-rsN"/>
+                    <constraint firstAttribute="bottom" secondItem="wkB-xK-qQI" secondAttribute="bottom" constant="16" id="SVT-6Q-4lU"/>
+                    <constraint firstItem="wkB-xK-qQI" firstAttribute="width" secondItem="wS4-sZ-SqM" secondAttribute="width" id="b6G-9Y-EL5"/>
+                    <constraint firstItem="wS4-sZ-SqM" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="16" id="bdL-6n-Hzd"/>
+                    <constraint firstItem="wS4-sZ-SqM" firstAttribute="leading" secondItem="wkB-xK-qQI" secondAttribute="trailing" constant="8" id="hcV-HU-XrF"/>
+                    <constraint firstItem="wkB-xK-qQI" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="16" id="ktH-g3-ERu"/>
+                    <constraint firstAttribute="bottom" secondItem="wS4-sZ-SqM" secondAttribute="bottom" constant="16" id="vOJ-lP-n00"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="KeyLabel" destination="wkB-xK-qQI" id="jTe-jb-rs1"/>
+                <outlet property="ValueLabel" destination="wS4-sZ-SqM" id="FpJ-fE-Vj8"/>
+            </connections>
+            <point key="canvasLocation" x="100.00000000000001" y="72.321428571428569"/>
+        </tableViewCell>
+    </objects>
+</document>
