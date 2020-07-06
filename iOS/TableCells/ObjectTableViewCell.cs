@@ -20,10 +20,11 @@ namespace ConfigDemo.iOS
             // Note: this .ctor should not contain any initialization logic.
         }
 
-        public void Bind(string key, string value)
+        public void Bind(string key)
         {
             this.KeyLabel.Text = key;
-            this.ValueLabel.Text = value;
+
+            this.ValueLabel.Text = string.Empty;
         }
     }
 }

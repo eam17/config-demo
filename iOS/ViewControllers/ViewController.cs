@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices.ComTypes;
 using ConfigDemo.Models;
 using ConfigDemo.Network;
 using ExampleApp.iOS.Datasource;
@@ -19,6 +20,7 @@ namespace ConfigDemo.iOS
         {
             base.ViewDidLoad();
 
+
             this.TableView.RegisterNibForCellReuse(ObjectTableViewCell.Nib, ObjectTableViewCell.Key);
             this.TableView.RegisterNibForCellReuse(PropertyTableViewCell.Nib, PropertyTableViewCell.Key);
             this.TableView.RowHeight = UITableView.AutomaticDimension;
@@ -29,11 +31,20 @@ namespace ConfigDemo.iOS
             GetRoot();
         }
 
-        public void NavigateToSecongLevel()
+        public void NavigateToLoginModes()
         {
             var sb = UIStoryboard.FromName("Main", null);
-            var vc = sb.InstantiateViewController("SecondLevelViewController");
-            //var vc2 = this.Storyboard.InstantiateViewController("SecondLevelViewController");
+            SecondLevelViewController vc = (SecondLevelViewController)sb.InstantiateViewController("SecondLevelViewController");
+            vc._Modes = this._Root.LoginModes;
+
+            this.NavigationController.PushViewController(vc, true);
+        }
+
+        public void NavigateToClients()
+        {
+            SecondLevelViewController vc = (SecondLevelViewController)this.Storyboard.InstantiateViewController("SecondLevelViewController");
+            vc._Clients = this._Root.Clients;
+
             this.NavigationController.PushViewController(vc, true);
         }
 
@@ -45,7 +56,7 @@ namespace ConfigDemo.iOS
         async void GetRoot()
         {
             this._Root = await new NetworkKat().GetRootObject<Root>();
-            var source = new ItemsDatasource(this._Root, this);
+            RootDatasource source = new RootDatasource(this._Root, this);
             this.TableView.Source = source;
             this.TableView.ReloadData();
         }

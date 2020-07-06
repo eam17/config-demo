@@ -93,14 +93,16 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Datasources\" />
+    <Folder Include="ViewControllers\" />
+    <Folder Include="TableCells\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Main.storyboard" />
-    <InterfaceDefinition Include="DetailViewController.xib" />
-    <InterfaceDefinition Include="ObjectTableViewCell.xib" />
-    <InterfaceDefinition Include="PropertyTableViewCell.xib" />
-    <InterfaceDefinition Include="FirstLevelViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\DetailViewController.xib" />
+    <InterfaceDefinition Include="ViewControllers\FirstLevelViewController.xib" />
+    <InterfaceDefinition Include="TableCells\ObjectTableViewCell.xib" />
+    <InterfaceDefinition Include="TableCells\PropertyTableViewCell.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -109,31 +111,37 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="ViewController.cs" />
-    <Compile Include="ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DetailViewController.cs" />
-    <Compile Include="DetailViewController.designer.cs">
+    <Compile Include="Datasources\RootDatasource.cs" />
+    <Compile Include="Datasources\FirstLevelDatasource.cs" />
+    <Compile Include="Datasources\ModesDatasource.cs" />
+    <Compile Include="Datasources\ClientsDatasource.cs" />
+    <Compile Include="ViewControllers\DetailViewController.cs" />
+    <Compile Include="ViewControllers\DetailViewController.designer.cs">
       <DependentUpon>DetailViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Datasources\ItemsDatasource.cs" />
-    <Compile Include="ObjectTableViewCell.cs" />
-    <Compile Include="ObjectTableViewCell.designer.cs">
-      <DependentUpon>ObjectTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PropertyTableViewCell.cs" />
-    <Compile Include="PropertyTableViewCell.designer.cs">
-      <DependentUpon>PropertyTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FirstLevelViewController.cs" />
-    <Compile Include="FirstLevelViewController.designer.cs">
+    <Compile Include="ViewControllers\FirstLevelViewController.cs" />
+    <Compile Include="ViewControllers\FirstLevelViewController.designer.cs">
       <DependentUpon>FirstLevelViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Datasources\FirstLevelDatasource.cs" />
-    <Compile Include="SecondLevelViewController.cs" />
-    <Compile Include="SecondLevelViewController.designer.cs">
+    <Compile Include="ViewControllers\SecondLevelViewController.cs" />
+    <Compile Include="ViewControllers\SecondLevelViewController.designer.cs">
       <DependentUpon>SecondLevelViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\ViewController.cs" />
+    <Compile Include="ViewControllers\ViewController.designer.cs">
+      <DependentUpon>ViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\OrganizationsViewController.cs" />
+    <Compile Include="ViewControllers\OrganizationsViewController.designer.cs">
+      <DependentUpon>OrganizationsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TableCells\ObjectTableViewCell.cs" />
+    <Compile Include="TableCells\ObjectTableViewCell.designer.cs">
+      <DependentUpon>ObjectTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TableCells\PropertyTableViewCell.cs" />
+    <Compile Include="TableCells\PropertyTableViewCell.designer.cs">
+      <DependentUpon>PropertyTableViewCell.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

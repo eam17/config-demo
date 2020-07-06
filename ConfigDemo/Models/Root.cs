@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace ConfigDemo.Models
 {
@@ -24,6 +25,8 @@ namespace ConfigDemo.Models
 
         [JsonProperty(PropertyName = "version")]
         public string Version { get; set; }
+
+       
     }
 }
 
