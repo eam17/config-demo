@@ -99,8 +99,6 @@
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Main.storyboard" />
-    <InterfaceDefinition Include="ViewControllers\DetailViewController.xib" />
-    <InterfaceDefinition Include="ViewControllers\FirstLevelViewController.xib" />
     <InterfaceDefinition Include="TableCells\ObjectTableViewCell.xib" />
     <InterfaceDefinition Include="TableCells\PropertyTableViewCell.xib" />
   </ItemGroup>
@@ -112,17 +110,8 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Datasources\RootDatasource.cs" />
-    <Compile Include="Datasources\FirstLevelDatasource.cs" />
     <Compile Include="Datasources\ModesDatasource.cs" />
     <Compile Include="Datasources\ClientsDatasource.cs" />
-    <Compile Include="ViewControllers\DetailViewController.cs" />
-    <Compile Include="ViewControllers\DetailViewController.designer.cs">
-      <DependentUpon>DetailViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\FirstLevelViewController.cs" />
-    <Compile Include="ViewControllers\FirstLevelViewController.designer.cs">
-      <DependentUpon>FirstLevelViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewControllers\SecondLevelViewController.cs" />
     <Compile Include="ViewControllers\SecondLevelViewController.designer.cs">
       <DependentUpon>SecondLevelViewController.cs</DependentUpon>
@@ -142,6 +131,16 @@
     <Compile Include="TableCells\PropertyTableViewCell.cs" />
     <Compile Include="TableCells\PropertyTableViewCell.designer.cs">
       <DependentUpon>PropertyTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Datasources\OrganizationsDatasource.cs" />
+    <Compile Include="Datasources\ClientOptionDatasource.cs" />
+    <Compile Include="FirstLevelViewController.cs" />
+    <Compile Include="FirstLevelViewController.designer.cs">
+      <DependentUpon>FirstLevelViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\ClientOptionViewController.cs" />
+    <Compile Include="ViewControllers\ClientOptionViewController.designer.cs">
+      <DependentUpon>ClientOptionViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

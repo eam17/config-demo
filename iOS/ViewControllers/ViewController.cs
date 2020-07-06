@@ -10,7 +10,7 @@ namespace ConfigDemo.iOS
     public partial class ViewController : UITableViewController
     {
         int count = 1;
-        Root _Root;
+        public Root _Root;
         ObjectTableViewCell _ObjectCell;
         public ViewController(IntPtr handle) : base(handle)
         {

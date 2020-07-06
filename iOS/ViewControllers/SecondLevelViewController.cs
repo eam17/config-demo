@@ -27,7 +27,6 @@ namespace ConfigDemo.iOS
             base.ViewDidLoad();
 
             this.TableView.RegisterNibForCellReuse(ObjectTableViewCell.Nib, ObjectTableViewCell.Key);
-            this.TableView.RegisterNibForCellReuse(PropertyTableViewCell.Nib, PropertyTableViewCell.Key);
             this.TableView.RowHeight = UITableView.AutomaticDimension;
             this.TableView.EstimatedRowHeight = 44;
             this.TableView.TableFooterView = new UIView();
@@ -56,5 +55,34 @@ namespace ConfigDemo.iOS
             this.TableView.Source = source;
             this.TableView.ReloadData();
         }
+
+        public void NavigateToOrganizations()
+        {
+            OrganizationsViewController vc = (OrganizationsViewController)this.Storyboard.InstantiateViewController("OrganizationsViewController");
+            vc._Org = this._Modes.Organizations;
+            this.NavigationController.PushViewController(vc, true);
+        }
+
+        public void NavigateToClientOption(int indexPathRow)
+        {
+            ClientOptionViewController vc = (ClientOptionViewController)this.Storyboard.InstantiateViewController("ClientOptionViewController");
+
+            switch (indexPathRow)
+            {
+                case 0:
+                    vc._ClientOption = this._Clients.Web;
+                    break;
+                case 1:
+                    vc._ClientOption = this._Clients.Android;
+                    break;
+                case 2:
+                    vc._ClientOption = this._Clients.iOS;
+                    break;
+                default:
+                    break;
+            }
+            this.NavigationController.PushViewController(vc, true);
+        }
+
     }
 }

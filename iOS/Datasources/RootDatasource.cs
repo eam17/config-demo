@@ -25,18 +25,14 @@ namespace ExampleApp.iOS.Datasource
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
-            if (this._IsRoot == true)
+            if (indexPath.Row < 2)
             {
-                if (indexPath.Row < 2)
-                {
-                    return GetObjectCell(tableView, indexPath);
-                }
-                else
-                {
-                    return GetPropertyCell(tableView, indexPath);
-                }
+                return GetObjectCell(tableView, indexPath);
             }
-            return null;
+            else
+            {
+                return GetPropertyCell(tableView, indexPath);
+            }
         }
 
         UITableViewCell GetObjectCell(UITableView tableView, NSIndexPath indexPath)
@@ -113,7 +109,7 @@ namespace ExampleApp.iOS.Datasource
                 default:
                     break;
             }
-            
+
             tableView.DeselectRow(indexPath, true);
         }
     }

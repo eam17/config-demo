@@ -33,7 +33,7 @@ namespace ConfigDemo.iOS.Datasources
 
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
-            //this._View.NavigateToOrganizations();
+            this._View.NavigateToOrganizations();
             tableView.DeselectRow(indexPath, true);
         }
     }
