@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using AVFoundation;
 using ConfigDemo.iOS;
 using ConfigDemo.Models;
 using Foundation;
@@ -18,22 +19,27 @@ namespace ExampleApp.iOS.Datasource
         bool _IsClients => this._Clients != null;
 
         int _RowNumber;
-        public ItemsDatasource(Root root)
+
+        ViewController _View;
+        public ItemsDatasource(Root root, ViewController view)
         {
             this._Root = root;
             this._RowNumber = 6;
+            this._View = view;
         }
 
-        public ItemsDatasource(LoginModes modes)
+        public ItemsDatasource(LoginModes modes, ViewController view)
         {
             this._Modes = modes;
             this._RowNumber = 1;
+            this._View = view;
         }
 
-        public ItemsDatasource(Clients clients)
+        public ItemsDatasource(Clients clients, ViewController view)
         {
             this._Clients = clients;
             this._RowNumber = 3;
+            this._View = view;
         }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
@@ -63,12 +69,6 @@ namespace ExampleApp.iOS.Datasource
                 return GetObjectCell(tableView, indexPath);
             }
             return null;
-        }
-
-        public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
-        {
-            //row tapped
-
         }
 
         //public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
@@ -153,6 +153,15 @@ namespace ExampleApp.iOS.Datasource
         public PropertyInfo GetItem(int row)
         {
             return this._PropList[row];
+        }
+
+        public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+        {
+            //row tapped
+            this._View.NavigateToSecongLevel();
+            // this._View.PresentViewController(okAlertController, true, null);
+
+            tableView.DeselectRow(indexPath, true);
         }
     }
 }

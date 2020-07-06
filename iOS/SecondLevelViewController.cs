@@ -12,5 +12,16 @@ namespace ConfigDemo.iOS
 		public SecondLevelViewController (IntPtr handle) : base (handle)
 		{
 		}
-	}
+
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+
+			this.TableView.RegisterNibForCellReuse(ObjectTableViewCell.Nib, ObjectTableViewCell.Key);
+			this.TableView.RegisterNibForCellReuse(PropertyTableViewCell.Nib, PropertyTableViewCell.Key);
+			this.TableView.RowHeight = UITableView.AutomaticDimension;
+			this.TableView.EstimatedRowHeight = 44;
+			this.TableView.TableFooterView = new UIView();
+		}
+    }
 }

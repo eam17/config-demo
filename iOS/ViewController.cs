@@ -27,10 +27,9 @@ namespace ConfigDemo.iOS
 
             // Perform any additional setup after loading the view, typically from a nib.
             GetRoot();
-
         }
 
-        void NavigateToSecongLevel()
+        public void NavigateToSecongLevel()
         {
             var sb = UIStoryboard.FromName("Main", null);
             var vc = sb.InstantiateViewController("SecondLevelViewController");
@@ -46,7 +45,7 @@ namespace ConfigDemo.iOS
         async void GetRoot()
         {
             this._Root = await new NetworkKat().GetRootObject<Root>();
-            var source = new ItemsDatasource(this._Root);
+            var source = new ItemsDatasource(this._Root, this);
             this.TableView.Source = source;
             this.TableView.ReloadData();
         }
