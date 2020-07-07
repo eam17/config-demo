@@ -63,6 +63,8 @@ namespace ExampleApp.iOS.Datasource
             string key = string.Empty;
             string value = string.Empty;
 
+            var cell = (PropertyTableViewCell)tableView.DequeueReusableCell(PropertyTableViewCell.Key);
+
             switch (indexPath.Row)
             {
                 case 2:
@@ -85,7 +87,6 @@ namespace ExampleApp.iOS.Datasource
                     break;
             }
 
-            var cell = (PropertyTableViewCell)tableView.DequeueReusableCell(PropertyTableViewCell.Key);
             cell.Bind(key, value);
             return cell;
         }

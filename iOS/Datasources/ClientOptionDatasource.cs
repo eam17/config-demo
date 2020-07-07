@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ConfigDemo.Models;
 using Foundation;
 using UIKit;
@@ -14,6 +15,7 @@ namespace ConfigDemo.iOS.Datasources
         {
             this._ClientOption = options;
             this._View = view;
+            this._ClientOption.Messages = new List<object> { "One", "Two", "Three", "Four", "Five" };
         }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
@@ -62,6 +64,8 @@ namespace ConfigDemo.iOS.Datasources
         {
             string key = string.Empty;
 
+            var cell = (ObjectTableViewCell)tableView.DequeueReusableCell(ObjectTableViewCell.Key);
+
             switch (indexPath.Row)
             {
                 case 3:
@@ -72,12 +76,14 @@ namespace ConfigDemo.iOS.Datasources
                     break;
                 case 5:
                     key = "Messages";
+                    if (this._ClientOption.Messages.Count == 0)
+                    {
+                        cell.Accessory = UIKit.UITableViewCellAccessory.None;
+                    }
                     break;
                 default:
                     break;
             }
-
-            var cell = (ObjectTableViewCell)tableView.DequeueReusableCell(ObjectTableViewCell.Key);
             cell.Bind(key);
             return cell;
         }
@@ -98,6 +104,15 @@ namespace ConfigDemo.iOS.Datasources
                     this._View.NavigateToFeatureFlags();
                     break;
                 case 5:
+                    if (this._ClientOption.Messages.Count == 0)
+                    {
+                        var alert = new UIAlertView("Alert", "No messages to display", null, "OK", null);
+                        alert.Show();
+                    }
+                    else
+                    {
+                        this._View.NavigateToMessages();
+                    }
                     break;
                 default:
                     break;

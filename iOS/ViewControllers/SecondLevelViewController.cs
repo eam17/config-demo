@@ -62,34 +62,32 @@ namespace ConfigDemo.iOS
         {
             OrganizationsViewController vc = (OrganizationsViewController)this.Storyboard.InstantiateViewController("OrganizationsViewController");
             vc._Org = this._Modes.Organizations;
+            vc.Title = "Organizations";
             this.NavigationController.PushViewController(vc, true);
         }
 
         public void NavigateToClientOption(int indexPathRow)
         {
             ClientOptionViewController vc = (ClientOptionViewController)this.Storyboard.InstantiateViewController("ClientOptionViewController");
-            var backTitle = string.Empty;
+            var title = string.Empty;
             switch (indexPathRow)
             {
                 case 0:
                     vc._ClientOption = this._Clients.Web;
-                    backTitle = "Web";
+                    title = "Web";
                     break;
                 case 1:
                     vc._ClientOption = this._Clients.Android;
-                    backTitle = "Android";
+                    title = "Android";
                     break;
                 case 2:
                     vc._ClientOption = this._Clients.iOS;
-                    backTitle = "iOS";
+                    title = "iOS";
                     break;
                 default:
                     break;
             }
-
-            this.NavigationItem.BackBarButtonItem = new UIBarButtonItem(backTitle,
-    UIBarButtonItemStyle.Plain, null);
-
+            vc.Title = title;
             this.NavigationController.PushViewController(vc, true);
         }
 

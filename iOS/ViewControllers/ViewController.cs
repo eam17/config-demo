@@ -36,6 +36,7 @@ namespace ConfigDemo.iOS
             var sb = UIStoryboard.FromName("Main", null);
             SecondLevelViewController vc = (SecondLevelViewController)sb.InstantiateViewController("SecondLevelViewController");
             vc._Modes = this._Root.LoginModes;
+            vc.Title = "Login Modes";
 
             this.NavigationController.PushViewController(vc, true);
         }
@@ -44,7 +45,7 @@ namespace ConfigDemo.iOS
         {
             SecondLevelViewController vc = (SecondLevelViewController)this.Storyboard.InstantiateViewController("SecondLevelViewController");
             vc._Clients = this._Root.Clients;
-
+            vc.Title = "Clients";
             this.NavigationController.PushViewController(vc, true);
         }
 

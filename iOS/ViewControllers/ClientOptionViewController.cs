@@ -8,14 +8,14 @@ using UIKit;
 
 namespace ConfigDemo.iOS
 {
-	public partial class ClientOptionViewController : UITableViewController
-	{
+    public partial class ClientOptionViewController : UITableViewController
+    {
         public ClientObject _ClientOption;
         bool _IsOption => this._ClientOption != null;
 
-        public ClientOptionViewController (IntPtr handle) : base (handle)
-		{
-		}
+        public ClientOptionViewController(IntPtr handle) : base(handle)
+        {
+        }
 
         public override void ViewDidLoad()
         {
@@ -42,10 +42,13 @@ namespace ConfigDemo.iOS
             this.TableView.ReloadData();
         }
 
+        //Navigation
+
         public void NavigateToClientActions()
         {
             ClientActionsViewController vc = (ClientActionsViewController)this.Storyboard.InstantiateViewController("ClientActionsViewController");
             vc._Action = this._ClientOption.ClientActions;
+            vc.Title = "Client Actions";
             this.NavigationController.PushViewController(vc, true);
         }
 
@@ -53,6 +56,15 @@ namespace ConfigDemo.iOS
         {
             FeatureFlagsViewController vc = (FeatureFlagsViewController)this.Storyboard.InstantiateViewController("FeatureFlagsViewController");
             vc._Flags = this._ClientOption.FeatureFlags;
+            vc.Title = "Feature Flags";
+            this.NavigationController.PushViewController(vc, true);
+        }
+
+        public void NavigateToMessages()
+        {
+            MessagesViewController vc = (MessagesViewController)this.Storyboard.InstantiateViewController("MessagesViewController");
+            vc._Messages = this._ClientOption.Messages;
+            vc.Title = "Messages";
             this.NavigationController.PushViewController(vc, true);
         }
 

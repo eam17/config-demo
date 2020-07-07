@@ -23,8 +23,10 @@ namespace ConfigDemo.iOS
         public void Bind(string key)
         {
             this.KeyLabel.Text = key;
-
             this.ValueLabel.Text = string.Empty;
+
+            this.KeyLabel.TextAlignment = UITextAlignment.Left;
+            this.KeyLabel.Font = UIFont.FromName("NotoSansKannada-Regular", 20f);
         }
     }
 }
