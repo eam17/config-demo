@@ -5,7 +5,7 @@ namespace ConfigDemo.Models
 {
         public class ClientActions
         {
-            [JsonProperty(PropertyName = "purgeLocal")]
-            public DateTime PurgeLocal { get; set; }
+        [JsonProperty(PropertyName = "purgeLocal")]
+        public DateTime? PurgeLocal { get; set; } = null;
         }
     }

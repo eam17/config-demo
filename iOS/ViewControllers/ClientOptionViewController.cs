@@ -32,6 +32,7 @@ namespace ConfigDemo.iOS
                 GetClientoptionItems();
             }
 
+
         }
 
         void GetClientoptionItems()
@@ -39,6 +40,20 @@ namespace ConfigDemo.iOS
             var source = new ClientOptionDatasource(this._ClientOption, this);
             this.TableView.Source = source;
             this.TableView.ReloadData();
+        }
+
+        public void NavigateToClientActions()
+        {
+            ClientActionsViewController vc = (ClientActionsViewController)this.Storyboard.InstantiateViewController("ClientActionsViewController");
+            vc._Action = this._ClientOption.ClientActions;
+            this.NavigationController.PushViewController(vc, true);
+        }
+
+        public void NavigateToFeatureFlags()
+        {
+            FeatureFlagsViewController vc = (FeatureFlagsViewController)this.Storyboard.InstantiateViewController("FeatureFlagsViewController");
+            vc._Flags = this._ClientOption.FeatureFlags;
+            this.NavigationController.PushViewController(vc, true);
         }
 
     }

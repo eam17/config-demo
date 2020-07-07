@@ -86,5 +86,24 @@ namespace ConfigDemo.iOS.Datasources
         {
             return 6;
         }
+
+        public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+        {
+            switch (indexPath.Row)
+            {
+                case 3:
+                    this._View.NavigateToClientActions();
+                    break;
+                case 4:
+                    this._View.NavigateToFeatureFlags();
+                    break;
+                case 5:
+                    break;
+                default:
+                    break;
+            }
+            
+            tableView.DeselectRow(indexPath, true);
+        }
     }
 }

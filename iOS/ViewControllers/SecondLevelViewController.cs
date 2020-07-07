@@ -40,6 +40,8 @@ namespace ConfigDemo.iOS
                 GetClients();
             }
 
+            
+
         }
 
         void GetModes()
@@ -66,21 +68,28 @@ namespace ConfigDemo.iOS
         public void NavigateToClientOption(int indexPathRow)
         {
             ClientOptionViewController vc = (ClientOptionViewController)this.Storyboard.InstantiateViewController("ClientOptionViewController");
-
+            var backTitle = string.Empty;
             switch (indexPathRow)
             {
                 case 0:
                     vc._ClientOption = this._Clients.Web;
+                    backTitle = "Web";
                     break;
                 case 1:
                     vc._ClientOption = this._Clients.Android;
+                    backTitle = "Android";
                     break;
                 case 2:
                     vc._ClientOption = this._Clients.iOS;
+                    backTitle = "iOS";
                     break;
                 default:
                     break;
             }
+
+            this.NavigationItem.BackBarButtonItem = new UIBarButtonItem(backTitle,
+    UIBarButtonItemStyle.Plain, null);
+
             this.NavigationController.PushViewController(vc, true);
         }
 

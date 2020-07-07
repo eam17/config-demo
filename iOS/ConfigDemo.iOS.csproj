@@ -142,6 +142,21 @@
     <Compile Include="ViewControllers\ClientOptionViewController.designer.cs">
       <DependentUpon>ClientOptionViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Datasources\ClientActionsDatasource.cs" />
+    <Compile Include="ViewControllers\ClientActionsViewController.cs" />
+    <Compile Include="ViewControllers\ClientActionsViewController.designer.cs">
+      <DependentUpon>ClientActionsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Datasources\FeatureFlagsDatasource.cs" />
+    <Compile Include="ViewControllers\FeatureFlagsViewController.cs" />
+    <Compile Include="ViewControllers\FeatureFlagsViewController.designer.cs">
+      <DependentUpon>FeatureFlagsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Datasources\MessagesDatasource.cs" />
+    <Compile Include="ViewControllers\MessagesViewController.cs" />
+    <Compile Include="ViewControllers\MessagesViewController.designer.cs">
+      <DependentUpon>MessagesViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
