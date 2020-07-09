@@ -2,7 +2,9 @@
 using System.Runtime.InteropServices.ComTypes;
 using ConfigDemo.Models;
 using ConfigDemo.Network;
+using CoreAnimation;
 using ExampleApp.iOS.Datasource;
+using Foundation;
 using UIKit;
 
 namespace ConfigDemo.iOS
@@ -20,12 +22,22 @@ namespace ConfigDemo.iOS
         {
             base.ViewDidLoad();
 
+            
+                this.TableView.RegisterNibForCellReuse(ObjectTableViewCell.Nib, ObjectTableViewCell.Key);
+                this.TableView.RegisterNibForCellReuse(PropertyTableViewCell.Nib, PropertyTableViewCell.Key);
+                this.TableView.RowHeight = UITableView.AutomaticDimension;
+                this.TableView.EstimatedRowHeight = 44;
+                this.TableView.TableFooterView = new UIView();
 
-            this.TableView.RegisterNibForCellReuse(ObjectTableViewCell.Nib, ObjectTableViewCell.Key);
-            this.TableView.RegisterNibForCellReuse(PropertyTableViewCell.Nib, PropertyTableViewCell.Key);
-            this.TableView.RowHeight = UITableView.AutomaticDimension;
-            this.TableView.EstimatedRowHeight = 44;
-            this.TableView.TableFooterView = new UIView();
+                this.TableView.BackgroundColor = UIColor.FromName("color-dark-2");
+
+                this.NavigationController.NavigationBar.BarTintColor = UIColor.FromName("color-teal-dark");
+                this.NavigationController.NavigationBar.TintColor = UIColor.FromName("color-dark-1");
+                this.NavigationController.NavigationBar.TitleTextAttributes = new UIStringAttributes()
+                {
+                    ForegroundColor = UIColor.FromName("color-dark-2")
+                };
+
 
             // Perform any additional setup after loading the view, typically from a nib.
             GetRoot();
@@ -61,5 +73,7 @@ namespace ConfigDemo.iOS
             this.TableView.Source = source;
             this.TableView.ReloadData();
         }
+
+        
     }
 }

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Drawing;
+using CoreAnimation;
+using CoreGraphics;
 using Foundation;
 using UIKit;
 
@@ -16,7 +19,7 @@ namespace ConfigDemo.iOS
 
         protected PropertyTableViewCell(IntPtr handle) : base(handle)
         {
-            // Note: this .ctor should not contain any initialization logic.
+            
         }
 
         public void Bind(string key, string value)
@@ -28,14 +31,29 @@ namespace ConfigDemo.iOS
             this.ValueLabel.TextAlignment = UITextAlignment.Left;
 
             this.KeyLabel.Font = UIFont.FromName("NotoSansKannada-Regular", 20f);
+            this.KeyLabel.TextColor = UIColor.FromName("color-yellow");
+
             this.ValueLabel.Font = UIFont.FromName("NotoSansKannada-Light", 17f);
 
-            var grayColor = new UIColor(red: 0.2f, green: 0.2f, blue: 0.2f, alpha: 1.00f);
-            var redColor = new UIColor(red: 0.90f, green: 0.04f, blue: 0.11f, alpha: 1.00f);
-            var greenColor = new UIColor(red: 0.18f, green: 0.45f, blue: 0.12f, alpha: 1.00f);
+            var purpleColor = UIColor.FromName("color-purple");
+            var redColor = UIColor.FromName("color-red");
+            var greenColor = UIColor.FromName("color-green");
 
-            this.ValueLabel.TextColor = value.Equals("True") ? greenColor : value.Equals("False") ? redColor : grayColor;
+            this.ValueLabel.TextColor = value.Equals("True") ? greenColor : value.Equals("False") ? redColor : purpleColor;
 
+
+
+            var gradientLayer = new CAGradientLayer();
+            gradientLayer.Colors = new[] { UIColor.Red.CGColor, UIColor.Blue.CGColor };
+            gradientLayer.Locations = new NSNumber[] { 0, 1 };
+
+            var rect = new CGRect(0, 0, this.Layer.Frame.Width, this.Layer.Frame.Height);
+
+            gradientLayer.Frame = rect;
+            gradientLayer.Opacity = 0.5f;
+
+            //this.TableView.BackgroundColor = UIColor.Clear;
+            this.Layer.InsertSublayer(gradientLayer, 1);
         }
     }
 }

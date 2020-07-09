@@ -25,13 +25,12 @@ namespace ConfigDemo.iOS
             this.TableView.RowHeight = UITableView.AutomaticDimension;
             this.TableView.EstimatedRowHeight = 44;
             this.TableView.TableFooterView = new UIView();
+            this.TableView.BackgroundColor = UIColor.FromName("color-dark-1");
 
             if (this._IsMessages)
             {
                 GetMessages();
             }
-
-
         }
 
         void GetMessages()

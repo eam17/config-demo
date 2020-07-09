@@ -32,6 +32,7 @@ namespace ConfigDemo.iOS.Datasources
             
             var cell = (PropertyTableViewCell)tableView.DequeueReusableCell(PropertyTableViewCell.Key);
             cell.Bind(key, value);
+            cell.BackgroundColor = ChooseColor(indexPath.Row);
             return cell;
         }
 
@@ -42,6 +43,18 @@ namespace ConfigDemo.iOS.Datasources
                 return 1;
             }
             return this._Messages.Count;
+        }
+
+        UIColor ChooseColor(int row)
+        {
+            if (row % 2 == 0)
+            {
+                return UIColor.FromName("color-dark-2");
+            }
+            else
+            {
+                return UIColor.FromName("color-dark-1");
+            }
         }
     }
 }

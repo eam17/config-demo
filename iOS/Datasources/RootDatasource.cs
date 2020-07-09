@@ -3,6 +3,8 @@ using System.Reflection;
 using AVFoundation;
 using ConfigDemo.iOS;
 using ConfigDemo.Models;
+using CoreAnimation;
+using CoreGraphics;
 using Foundation;
 using UIKit;
 
@@ -54,7 +56,12 @@ namespace ExampleApp.iOS.Datasource
             }
 
             var cell = (ObjectTableViewCell)tableView.DequeueReusableCell(ObjectTableViewCell.Key);
+
             cell.Bind(key);
+            cell.BackgroundColor = ChooseColor(indexPath.Row);
+
+            
+
             return cell;
         }
 
@@ -86,8 +93,20 @@ namespace ExampleApp.iOS.Datasource
                 default:
                     break;
             }
-
             cell.Bind(key, value);
+            cell.BackgroundColor = ChooseColor(indexPath.Row);
+
+            //var gradientLayer = new CAGradientLayer();
+            //gradientLayer.Colors = new[] { UIColor.Red.CGColor, UIColor.Blue.CGColor };
+            //gradientLayer.Locations = new NSNumber[] { 0, 1 };
+
+            //var rect = new CGRect(0, 0, 543, cell.IntrinsicContentSize.Height);
+            //gradientLayer.Frame = rect;
+            //gradientLayer.Opacity = 0.5f;
+
+            ////this.TableView.BackgroundColor = UIColor.Clear;
+            //cell.Layer.AddSublayer(gradientLayer);
+
             return cell;
         }
 
@@ -113,5 +132,18 @@ namespace ExampleApp.iOS.Datasource
 
             tableView.DeselectRow(indexPath, true);
         }
+
+        UIColor ChooseColor(int row)
+        {
+            if (row % 2 == 0)
+            {
+                return UIColor.FromName("color-dark-2");
+            }
+            else
+            {
+                return UIColor.FromName("color-dark-1");
+            }
+        }
+
     }
 }

@@ -23,6 +23,7 @@ namespace ConfigDemo.iOS.Datasources
             var key = "Organizations";
             var cell = (ObjectTableViewCell)tableView.DequeueReusableCell(ObjectTableViewCell.Key);
             cell.Bind(key);
+            cell.BackgroundColor = ChooseColor(indexPath.Row);
             return cell;
         }
 
@@ -35,6 +36,18 @@ namespace ConfigDemo.iOS.Datasources
         {
             this._View.NavigateToOrganizations();
             tableView.DeselectRow(indexPath, true);
+        }
+
+        UIColor ChooseColor(int row)
+        {
+            if (row % 2 == 0)
+            {
+                return UIColor.FromName("color-dark-2");
+            }
+            else
+            {
+                return UIColor.FromName("color-dark-1");
+            }
         }
     }
 }

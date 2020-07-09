@@ -57,6 +57,7 @@ namespace ConfigDemo.iOS.Datasources
 
             var cell = (PropertyTableViewCell)tableView.DequeueReusableCell(PropertyTableViewCell.Key);
             cell.Bind(key, value);
+            cell.BackgroundColor = ChooseColor(indexPath.Row);
             return cell;
         }
 
@@ -85,6 +86,7 @@ namespace ConfigDemo.iOS.Datasources
                     break;
             }
             cell.Bind(key);
+            cell.BackgroundColor = ChooseColor(indexPath.Row);
             return cell;
         }
 
@@ -119,6 +121,18 @@ namespace ConfigDemo.iOS.Datasources
             }
             
             tableView.DeselectRow(indexPath, true);
+        }
+
+        UIColor ChooseColor(int row)
+        {
+            if (row % 2 == 0)
+            {
+                return UIColor.FromName("color-dark-2");
+            }
+            else
+            {
+                return UIColor.FromName("color-dark-1");
+            }
         }
     }
 }

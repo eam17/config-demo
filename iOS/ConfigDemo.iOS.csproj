@@ -89,12 +89,28 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\color-dark-1.colorset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\color-dark-2.colorset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\color-red.colorset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\color-green.colorset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\color-yellow.colorset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\color-purple.colorset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\color-light.colorset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\color-teal-dark.colorset\Contents.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Datasources\" />
     <Folder Include="ViewControllers\" />
     <Folder Include="TableCells\" />
+    <Folder Include="Assets.xcassets\color-dark-1.colorset\" />
+    <Folder Include="Assets.xcassets\color-dark-2.colorset\" />
+    <Folder Include="Assets.xcassets\color-red.colorset\" />
+    <Folder Include="Assets.xcassets\color-green.colorset\" />
+    <Folder Include="Assets.xcassets\color-yellow.colorset\" />
+    <Folder Include="Assets.xcassets\color-purple.colorset\" />
+    <Folder Include="Assets.xcassets\color-light.colorset\" />
+    <Folder Include="Assets.xcassets\color-teal-dark.colorset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
