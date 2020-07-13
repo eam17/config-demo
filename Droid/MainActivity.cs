@@ -1,27 +1,55 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using Android.Support.V7.Widget;
+using ConfigDemo.Models;
+using ConfigDemo.Network;
+using ConfigDemo.Droid.Adapters;
 
 namespace ConfigDemo.Droid
 {
     [Activity(Label = "ConfigDemo", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : Activity
     {
-        int count = 1;
+        RecyclerView _View;
+        private RecyclerView.Adapter _RootAdapter;
+        private RecyclerView.LayoutManager _RootLayoutManager;
+
+        Root _Root;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Main);
+            SetContentView(Resource.Layout.RootRecyclerViewLayout);
 
-            // Get our button from the layout resource,
-            // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.myButton);
+            // Get our RecyclerView layout:
+            this._View = FindViewById<RecyclerView>(Resource.Id.root_recycler_view);
 
-            button.Click += delegate { button.Text = $"{count++} clicks!"; };
+
+            // Prepare the data source
+            GetRoot();
+
+            // Instantiate the adapter and pass in its data source
+            this._RootAdapter = new RootAdapter(this._Root);
+
+            // Plug the adapter into the RecyclerView
+            // Datasourcce
+            this._View.SetAdapter(this._RootAdapter);
+
+
+            // Plug in the linear layout manager
+            this._RootLayoutManager = new LinearLayoutManager(this);
+            this._View.SetLayoutManager(this._RootLayoutManager);
+
         }
+
+        async void GetRoot()
+        {
+            this._Root = await new NetworkKat().GetRootObject<Root>();
+        }
+
     }
 }
 
