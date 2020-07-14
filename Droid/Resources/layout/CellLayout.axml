@@ -8,5 +8,11 @@
 			android:layout_height="wrap_content"
 			android:textColor="#333333"
 			android:text="Item"
-			android:id="@+id/cell_text_view" />
+			android:id="@+id/cell_text_view_key" />
+    <TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textColor="#333333"
+			android:text="Item"
+			android:id="@+id/cell_text_view_value" />
 </LinearLayout>

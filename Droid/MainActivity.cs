@@ -31,13 +31,6 @@ namespace ConfigDemo.Droid
             // Prepare the data source
             GetRoot();
 
-            // Instantiate the adapter and pass in its data source
-            this._RootAdapter = new RootAdapter(this._Root);
-
-            // Plug the adapter into the RecyclerView
-            // Datasourcce
-            this._View.SetAdapter(this._RootAdapter);
-
 
             // Plug in the linear layout manager
             this._RootLayoutManager = new LinearLayoutManager(this);
@@ -48,6 +41,11 @@ namespace ConfigDemo.Droid
         async void GetRoot()
         {
             this._Root = await new NetworkKat().GetRootObject<Root>();
+            if (this._Root != null)
+            {
+                this._RootAdapter = new RootAdapter(this._Root);
+                this._View.SetAdapter(this._RootAdapter);
+            }
         }
 
     }

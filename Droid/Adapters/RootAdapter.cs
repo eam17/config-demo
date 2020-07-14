@@ -11,6 +11,8 @@ namespace ConfigDemo.Droid.Adapters
         // Underlying data set
         Root _Root;
 
+        bool _IsRoot => this._Root != null;
+
         // Load the adapter with the data set at construction time
         public RootAdapter(Root root)
         {
@@ -18,7 +20,7 @@ namespace ConfigDemo.Droid.Adapters
         }
 
         // Create a new row
-// GetCell?
+        // GetCell?
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
             // Inflate the View for the item
@@ -33,16 +35,48 @@ namespace ConfigDemo.Droid.Adapters
         }
 
         // Fill in the contents of the item row(invoked by the layout manager):
-//Bind?
+        //Bind?
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-            RowViewHolder vh = (RowViewHolder)holder; //as RowViewHolder 
+            RowViewHolder row = (RowViewHolder)holder; //as RowViewHolder 
 
-            // Set the TextView in this ViewHolder's CardView from this position in the photo album:
-            vh._ItemText.Text = "hello";
+            var key = string.Empty;
+            var value = string.Empty;
+            if (this._IsRoot)
+            {
+                switch (position)
+                {
+                    case 0:
+                        key = "LoginModes";
+                        break;
+                    case 1:
+                        key = "Clients";
+                        break;
+                    case 2:
+                        key = "Is Production";
+                        value = this._Root.IsProduction.ToString();
+                        break;
+                    case 3:
+                        key = "ApiDomain";
+                        value = this._Root.ApiDomain;
+                        break;
+                    case 4:
+                        key = "PingOneLogoutUrl";
+                        value = this._Root.PingOneLogoutUrl;
+                        break;
+                    case 5:
+                        key = "Version";
+                        value = this._Root.Version;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            row._ItemKey.Text = key;
+            row._ItemValue.Text = value;
         }
 
-        
+
 
         public override int ItemCount
         {
