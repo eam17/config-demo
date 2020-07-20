@@ -4,7 +4,7 @@
 
 using System;
 
-namespace AndroidRecyclerViewDemo
+namespace ConfigDemo.PubSub
 {
     /// <summary>
     /// Pub-sub extension methods available to all objects within myStrength.

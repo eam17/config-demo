@@ -2,13 +2,14 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using ConfigDemo.Models;
+using ConfigDemo.PubSub;
 using Newtonsoft.Json;
 
 namespace ConfigDemo.Network
 {
     public class NetworkKat
     {
-        public async Task<T> GetRootObject<T>()
+        public async void GetRootObject()
         {
             string url = "https://api.mystrength.com/config?useNewFormat=true";
             try
@@ -16,7 +17,7 @@ namespace ConfigDemo.Network
                 using (var client = new HttpClient())
                 {
                     string response = await client.GetStringAsync(url);
-                    return ParseJSON<T>(response);
+                    this.Publish(new ObjectParsed(ParseJSON<Root>(response)));
                     
                 }
             }
@@ -26,12 +27,11 @@ namespace ConfigDemo.Network
                 Debug.WriteLine("Message :{0} ", e.Message);
             }
 
-            return default;
         }
 
         T ParseJSON<T>(string response)
         {
-            return JsonConvert.DeserializeObject<T>(response);
+            return JsonConvert.DeserializeObject<T>(response);//makes Root not null
         }
     }
 }

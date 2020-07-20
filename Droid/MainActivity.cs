@@ -5,6 +5,8 @@ using Android.Support.V7.Widget;
 using ConfigDemo.Models;
 using ConfigDemo.Network;
 using ConfigDemo.Droid.Adapters;
+using ConfigDemo.PubSub;
+using System;
 
 namespace ConfigDemo.Droid
 {
@@ -21,6 +23,12 @@ namespace ConfigDemo.Droid
         {
             base.OnCreate(savedInstanceState);
 
+            //subscribe + add method
+            new ModelsDictionaries();
+            this.Subscribe<ListPopulated>(SetDatasource);
+            this.Subscribe<RowTappedEvent>(ResetDatasource);
+
+
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.RootRecyclerViewLayout);
 
@@ -28,8 +36,6 @@ namespace ConfigDemo.Droid
             this._View = FindViewById<RecyclerView>(Resource.Id.root_recycler_view);
 
 
-            // Prepare the data source
-            GetRoot();
 
 
             // Plug in the linear layout manager
@@ -38,14 +44,17 @@ namespace ConfigDemo.Droid
 
         }
 
-        async void GetRoot()
+        private void ResetDatasource(RowTappedEvent obj)
         {
-            this._Root = await new NetworkKat().GetRootObject<Root>();
-            if (this._Root != null)
-            {
-                this._RootAdapter = new RootAdapter(this._Root);
-                this._View.SetAdapter(this._RootAdapter);
-            }
+            this._RootAdapter = new RootAdapter(ModelsDictionaries.CurrentList);
+            this._View.SetAdapter(this._RootAdapter);
+        }
+
+        void SetDatasource(ListPopulated obj)
+        {
+            this._RootAdapter = new RootAdapter(ModelsDictionaries.ItemsList);
+            this._View.SetAdapter(this._RootAdapter);
+           
         }
 
     }

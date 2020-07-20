@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Android.Support.V7.Widget;
 using Android.Views;
 using ConfigDemo.Models;
@@ -9,14 +10,13 @@ namespace ConfigDemo.Droid.Adapters
     public class RootAdapter : RecyclerView.Adapter
     {
         // Underlying data set
-        Root _Root;
-
-        bool _IsRoot => this._Root != null;
-
+        List<(string Key, object Value)> _ItemsList;
+        List<(string Key, object Value)> _CurrentList;
         // Load the adapter with the data set at construction time
-        public RootAdapter(Root root)
+        public RootAdapter(List<(string Key, object Value)> items)
         {
-            this._Root = root;
+            this._ItemsList = items;
+            this._CurrentList = ModelsDictionaries.CurrentList;
         }
 
         // Create a new row
@@ -24,12 +24,9 @@ namespace ConfigDemo.Droid.Adapters
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
             // Inflate the View for the item
+            View itemView = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.CellLayout, parent, false);
 
-            View itemView = LayoutInflater.From(parent.Context).
-                        Inflate(Resource.Layout.CellLayout, parent, false);
-
-            // Create a ViewHolder to find and hold these view references, and 
-            // register OnClick with the view holder:
+            // Create a ViewHolder to find and hold these view references
             RowViewHolder vh = new RowViewHolder(itemView);
             return vh;
         }
@@ -42,36 +39,15 @@ namespace ConfigDemo.Droid.Adapters
 
             var key = string.Empty;
             var value = string.Empty;
-            if (this._IsRoot)
+
+            key = this._CurrentList[position].Key;
+            var valueType = this._CurrentList[position].Value.GetType().ToString();
+            if (valueType == "System.String" || valueType == "System.Boolean")
             {
-                switch (position)
-                {
-                    case 0:
-                        key = "LoginModes";
-                        break;
-                    case 1:
-                        key = "Clients";
-                        break;
-                    case 2:
-                        key = "Is Production";
-                        value = this._Root.IsProduction.ToString();
-                        break;
-                    case 3:
-                        key = "ApiDomain";
-                        value = this._Root.ApiDomain;
-                        break;
-                    case 4:
-                        key = "PingOneLogoutUrl";
-                        value = this._Root.PingOneLogoutUrl;
-                        break;
-                    case 5:
-                        key = "Version";
-                        value = this._Root.Version;
-                        break;
-                    default:
-                        break;
-                }
+                value = this._CurrentList[position].Value.ToString();
             }
+
+            row.RowPosition = position;
             row._ItemKey.Text = key;
             row._ItemValue.Text = value;
         }

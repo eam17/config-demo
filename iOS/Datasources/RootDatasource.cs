@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using AVFoundation;
 using ConfigDemo.iOS;
@@ -12,16 +13,14 @@ namespace ExampleApp.iOS.Datasource
 {
     public class RootDatasource : UITableViewSource
     {
-        Root _Root;
-
-        bool _IsRoot => this._Root != null;
 
         ViewController _View;
 
+        List<(string Key, object Value)> _ItemsList;
 
-        public RootDatasource(Root root, ViewController view)
+        public RootDatasource(List<(string Key, object Value)> items, ViewController view)
         {
-            this._Root = root;
+            this._ItemsList = items;
             this._View = view;
         }
 
@@ -40,27 +39,16 @@ namespace ExampleApp.iOS.Datasource
         UITableViewCell GetObjectCell(UITableView tableView, NSIndexPath indexPath)
         {
             string key = string.Empty;
-            if (this._IsRoot)
-            {
-                switch (indexPath.Row)
-                {
-                    case 0:
-                        key = "LoginModes";
-                        break;
-                    case 1:
-                        key = "Clients";
-                        break;
-                    default:
-                        break;
-                }
-            }
+
+            key = this._ItemsList[indexPath.Row].Key;
+
 
             var cell = (ObjectTableViewCell)tableView.DequeueReusableCell(ObjectTableViewCell.Key);
 
             cell.Bind(key);
             cell.BackgroundColor = ChooseColor(indexPath.Row);
 
-            
+
 
             return cell;
         }
@@ -72,27 +60,9 @@ namespace ExampleApp.iOS.Datasource
 
             var cell = (PropertyTableViewCell)tableView.DequeueReusableCell(PropertyTableViewCell.Key);
 
-            switch (indexPath.Row)
-            {
-                case 2:
-                    key = "Is Production";
-                    value = this._Root.IsProduction.ToString();
-                    break;
-                case 3:
-                    key = "ApiDomain";
-                    value = this._Root.ApiDomain;
-                    break;
-                case 4:
-                    key = "PingOneLogoutUrl";
-                    value = this._Root.PingOneLogoutUrl;
-                    break;
-                case 5:
-                    key = "Version";
-                    value = this._Root.Version;
-                    break;
-                default:
-                    break;
-            }
+            key = this._ItemsList[indexPath.Row].Key;
+            value = this._ItemsList[indexPath.Row].Value.ToString();
+
             cell.Bind(key, value);
             cell.BackgroundColor = ChooseColor(indexPath.Row);
 

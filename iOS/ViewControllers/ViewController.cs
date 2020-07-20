@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices.ComTypes;
 using ConfigDemo.Models;
 using ConfigDemo.Network;
+using ConfigDemo.PubSub;
 using CoreAnimation;
 using ExampleApp.iOS.Datasource;
 using Foundation;
@@ -12,7 +13,7 @@ namespace ConfigDemo.iOS
     public partial class ViewController : UITableViewController
     {
         int count = 1;
-        public Root _Root;
+        //public Root _Root;
         ObjectTableViewCell _ObjectCell;
         public ViewController(IntPtr handle) : base(handle)
         {
@@ -38,16 +39,21 @@ namespace ConfigDemo.iOS
                     ForegroundColor = UIColor.FromName("color-dark-2")
                 };
 
-
+            new ModelsDictionaries();
             // Perform any additional setup after loading the view, typically from a nib.
-            GetRoot();
+            //GetRoot();
+
+            this.Subscribe<ListPopulated>(SetDatasource);
+
+            RootDatasource source = new RootDatasource(ModelsDictionaries.ItemsList, this);
         }
+
 
         public void NavigateToLoginModes()
         {
             var sb = UIStoryboard.FromName("Main", null);
             SecondLevelViewController vc = (SecondLevelViewController)sb.InstantiateViewController("SecondLevelViewController");
-            vc._Modes = this._Root.LoginModes;
+            //vc._Modes = this._Root.LoginModes;
             vc.Title = "Login Modes";
 
             this.NavigationController.PushViewController(vc, true);
@@ -56,7 +62,7 @@ namespace ConfigDemo.iOS
         public void NavigateToClients()
         {
             SecondLevelViewController vc = (SecondLevelViewController)this.Storyboard.InstantiateViewController("SecondLevelViewController");
-            vc._Clients = this._Root.Clients;
+            //vc._Clients = this._Root.Clients;
             vc.Title = "Clients";
             this.NavigationController.PushViewController(vc, true);
         }
@@ -66,11 +72,11 @@ namespace ConfigDemo.iOS
             base.DidReceiveMemoryWarning();
             // Release any cached data, images, etc that aren't in use.		
         }
-        async void GetRoot()
+
+        void SetDatasource(ListPopulated obj)
         {
-            this._Root = await new NetworkKat().GetRootObject<Root>();
-            RootDatasource source = new RootDatasource(this._Root, this);
-            this.TableView.Source = source;
+            
+            //this.TableView.Source = source;
             this.TableView.ReloadData();
         }
 
