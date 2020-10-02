@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Runtime.InteropServices.ComTypes;
-using ConfigDemo.Models;
-using ConfigDemo.Network;
-using ConfigDemo.PubSub;
+using AttributeDemo.Models;
+using AttributeDemo.Network;
+using AttributeDemo.PubSub;
 using CoreAnimation;
 using ExampleApp.iOS.Datasource;
 using Foundation;
 using UIKit;
 
-namespace ConfigDemo.iOS
+namespace AttributeDemo.iOS
 {
     public partial class ViewController : UITableViewController
     {
@@ -29,16 +29,6 @@ namespace ConfigDemo.iOS
                 this.TableView.RowHeight = UITableView.AutomaticDimension;
                 this.TableView.EstimatedRowHeight = 44;
                 this.TableView.TableFooterView = new UIView();
-
-                this.TableView.BackgroundColor = UIColor.FromName("color-dark-2");
-
-                this.NavigationController.NavigationBar.BarTintColor = UIColor.FromName("color-teal-dark");
-                this.NavigationController.NavigationBar.TintColor = UIColor.FromName("color-dark-1");
-                this.NavigationController.NavigationBar.TitleTextAttributes = new UIStringAttributes()
-                {
-                    ForegroundColor = UIColor.FromName("color-dark-2")
-                };
-
             new ModelsDictionaries();
             // Perform any additional setup after loading the view, typically from a nib.
             //GetRoot();
@@ -75,8 +65,8 @@ namespace ConfigDemo.iOS
 
         void SetDatasource(ListPopulated obj)
         {
-            
-            //this.TableView.Source = source;
+            RootDatasource source = new RootDatasource(ModelsDictionaries.ItemsList, this);
+            this.TableView.Source = source;
             this.TableView.ReloadData();
         }
 
